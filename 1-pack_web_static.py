@@ -11,7 +11,8 @@ from datetime import datetime
 
 def do_pack():
     ''' Creates an archive of the web_static directory
-    Using format: versions/web_static_<year><month><day><hour><minute><second>.tgz
+    Using format:
+        versions/web_static_<year><month><day><hour><minute><second>.tgz
     '''
     local("mkdir -p versions")
     archive_path = "versions/web_static_{}.tgz".format(
