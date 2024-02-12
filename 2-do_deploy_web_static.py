@@ -55,14 +55,3 @@ def do_deploy(archive_path):
     except Exception:
         return False
     return True
-
-def deploy():
-    ''' Packs and deploys the web static app
-
-    Returns:
-        bool: True if deployment was successful, False otherwise
-    '''
-    archive_path = do_pack()
-    if archive_path is None:
-        return False
-    return do_deploy(archive_path)
