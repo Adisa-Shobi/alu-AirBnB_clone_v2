@@ -4,32 +4,10 @@
 do_pack: Creates an archive of the web_static directory
 do_deploy: Moves an archive to the web servers
 '''
-from fabric.api import *
+from fabric.api import put, run, env
 from datetime import datetime
 import os
-
-
-env.hosts = [
-    '54.210.227.60',
-    '54.82.115.223'
-]
-#env.user = 'ubuntu'
-#env.key_filename = '~/.ssh/id_rsa'
-
-
-def do_pack():
-    ''' Creates an archive of the web_static directory
-    Using format:
-        versions/web_static_<year><month><day><hour><minute><second>.tgz
-    '''
-    local("mkdir -p versions")
-    archive_path = "versions/web_static_{}.tgz".format(
-        datetime.now().strftime('%Y%m%d%H%M%S'))
-    result = local("tar -cvzf {} web_static".format(archive_path))
-
-    if result.succeeded:
-        return archive_path
-    return None
+env.hosts = ['54.210.227.60', '54.82.115.223']
 
 
 def do_deploy(archive_path):
