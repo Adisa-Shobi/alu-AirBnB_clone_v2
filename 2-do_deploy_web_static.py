@@ -10,8 +10,8 @@ import os
 
 
 env.hosts = [
-    '54.221.44.233',
-    '3.84.126.21'
+    '54.210.227.60',
+    '54.82.115.223'
 ]
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/id_rsa'
@@ -45,7 +45,7 @@ def do_deploy(archive_path):
         put(archive_path, "/tmp/{}".format(file_name))
         run("mkdir -p {}".format(folder_path))
         run("tar -xzf /tmp/{} -C {}".format(file_name, folder_path))
-        run("rm -rf /tmp/{}".format(file_name))
+        run("rm /tmp/{}".format(file_name))
         run("mv {}web_static/* {}".format(folder_path, folder_path))
         run("rm -rf {}web_static".format(folder_path))
         run("rm -rf /data/web_static/current")
