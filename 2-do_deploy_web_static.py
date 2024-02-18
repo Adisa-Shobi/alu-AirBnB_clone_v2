@@ -13,8 +13,8 @@ env.hosts = [
     '54.210.227.60',
     '54.82.115.223'
 ]
-env.user = 'ubuntu'
-env.key_filename = '~/.ssh/id_rsa'
+#env.user = 'ubuntu'
+#env.key_filename = '~/.ssh/id_rsa'
 
 
 def do_pack():
