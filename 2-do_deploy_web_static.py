@@ -5,8 +5,7 @@ do_pack: Creates an archive of the web_static directory
 do_deploy: Moves an archive to the web servers
 '''
 from fabric.api import put, run, env
-from datetime import datetime
-import os
+from os.path import exists
 env.hosts = ['54.210.227.60', '54.82.115.223']
 
 
