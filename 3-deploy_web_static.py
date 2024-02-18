@@ -56,6 +56,7 @@ def do_deploy(archive_path):
         return False
     return True
 
+
 def deploy():
     ''' Packs and deploys the web static app
 
