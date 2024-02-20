@@ -52,6 +52,7 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             from models import storage
+            from models.amenity import Amenity
             result = [amenity for amenity in storage.all(Amenity).values()
                       if amenity.id in self.amenity_ids]
             return result

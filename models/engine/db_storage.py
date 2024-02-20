@@ -19,6 +19,8 @@ class DBStorage():
     __engine = None
     __session = None
 
+    models = [City, State, User, Place, Review, Amenity]
+
     def __init__(self):
         '''Initializes and establishes all connections for db storage
         '''
@@ -44,20 +46,32 @@ class DBStorage():
     def all(self, cls=None):
         '''Return all the all instances of type cls
         '''
-        models = [City, State, User, Place, Review, Amenity]
+
         result_dict = {}
-        if cls is not None and cls in models:
+        if cls is not None and cls in DBStorage.models:
             for obj in self.__session.query(cls).all():
                 result_dict.update(
                     {"{}.{}".format(obj.__class__.__name__, obj.id): obj}
                 )
         else:
-            for model in models:
+            for model in DBStorage.models:
                 for obj in self.__session.query(model).all():
                     result_dict.update(
                         {"{}.{}".format(obj.__class__.__name__, obj.id): obj}
                     )
         return result_dict
+
+    def delete_all(self):
+        """
+           deletes all stored objects, for testing purposes
+        """
+        for c in DBStorage.models:
+            a_query = self.__session.query(c)
+            all_objs = [obj for obj in a_query]
+            for obj in range(len(all_objs)):
+                to_delete = all_objs.pop(0)
+                to_delete.delete()
+        self.save()
 
     def new(self, obj):
         '''Adds obj to the current database session

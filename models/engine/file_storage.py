@@ -30,6 +30,19 @@ class FileStorage:
                 del self.__objects[key]
                 self.save()
 
+    def delete_all(self):
+        """
+            deletes all stored objects, for testing purposes
+        """
+        try:
+            with open(FileStorage.__file_path, mode='w') as f_io:
+                pass
+        except Exception:
+            pass
+        del FileStorage.__objects
+        FileStorage.__objects = {}
+        self.save()
+
     def save(self):
         """Saves the storage dictionary to a file"""
         with open(self.__file_path, 'w') as f:
