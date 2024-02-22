@@ -39,7 +39,7 @@ class DBStorage():
                 password,
                 host,
                 db
-            ), pool_pre_ping=True, encoding='latin1')
+            ), pool_pre_ping=True)
         if dev_mode == 'test':
             Base.metadata.drop_all(self.__engine)
 
