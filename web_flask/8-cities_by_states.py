@@ -15,7 +15,7 @@ def cities():
     at the /cities_by_states route,
     listing the cities by states"""
     return render_template('8-cities_by_states.html',
-                           states=[state.to_dict() for state in storage.all('State').values()])
+                           states=[state for state in storage.all(State).values()])
 
 
 @app.teardown_appcontext
