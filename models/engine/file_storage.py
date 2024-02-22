@@ -15,7 +15,7 @@ class FileStorage:
         my_dict = {}
         for key, val in FileStorage.__objects.items():
             if isinstance(val, cls):
-                my_dict[key] = val.to_dict()
+                my_dict[key] = val
         return my_dict
 
     def new(self, obj):
