@@ -10,6 +10,7 @@ from models import storage_type
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = "states"
+    __table_args__ = {'mysql_charset': 'latin1'}
 
     if storage_type == "db":
         cities = relationship("City", backref="state", cascade="all, delete")

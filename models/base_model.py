@@ -13,6 +13,7 @@ Base = declarative_base()
 
 class BaseModel():
     """A base class for all hbnb models"""
+    __table_args__ = {'mysql_charset': 'latin1'}
 
     id = Column(String(60), unique=True, nullable=False, primary_key=True)
     created_at = Column(DateTime(), default=datetime.utcnow(), nullable=False)

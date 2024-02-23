@@ -11,12 +11,15 @@ if storage_type == 'db':
                           Column('place_id', String(60),
                                  ForeignKey('places.id'), primary_key=True),
                           Column('amenity_id', String(60),
-                                 ForeignKey('amenities.id'), primary_key=True))
+                                 ForeignKey('amenities.id'), primary_key=True),
+                          mysql_charset='latin1'
+                          )
 
 
 class Place(BaseModel, Base):
     """ A place to stay """
     __tablename__ = 'places'
+    __table_args__ = {'mysql_charset': 'latin1'}
 
     if storage_type == 'db':
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
@@ -51,7 +54,7 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            from models import storage            
+            from models import storage
             from models.amenity import Amenity
             result = [amenity for amenity in storage.all(Amenity).values()
                       if amenity.id in self.amenity_ids]
