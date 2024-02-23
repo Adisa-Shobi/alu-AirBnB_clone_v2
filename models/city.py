@@ -11,7 +11,7 @@ class City(BaseModel, Base):
     __tablename__ = "cities"
     __table_args__ = {'mysql_charset': 'latin1'}
 
-    state_id = Column(String(60), ForeignKey('states.id'),  nullable=False, unique=True)
+    state_id = Column(String(60), ForeignKey('states.id'),  nullable=False)
     name = Column(String(128), nullable=False)
     if storage_type == 'db':
         places = relationship("Place", backref='cities', cascade="all, delete")
