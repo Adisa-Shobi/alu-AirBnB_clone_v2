@@ -17,7 +17,7 @@ def cities():
     at the /cities_by_states route,
     listing the cities by states"""
     return render_template('8-cities_by_states.html',
-                           states=storage.all(State).values())
+                           states=storage.all(State))
 
 
 @app.teardown_appcontext
